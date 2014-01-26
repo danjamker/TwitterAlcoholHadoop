@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="822bd9ef-b5b9-4b7a-ab1c-835b13954213" name="Default" comment="" />
+    <list default="true" id="822bd9ef-b5b9-4b7a-ab1c-835b13954213" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.mrjob.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AlcoholGraphs.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MrJob.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tools/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tools/toMongo.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mrjob.conf" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/files/english" afterPath="$PROJECT_DIR$/english" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/files/postcodeareas.csv" afterPath="$PROJECT_DIR$/postcodeareas.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/files/postcodes.csv" afterPath="$PROJECT_DIR$/postcodes.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/files/terms.csv" afterPath="$PROJECT_DIR$/terms.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Geo.py" afterPath="$PROJECT_DIR$/Geo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TwitterAlcoholHadoop.iml" afterPath="$PROJECT_DIR$/.idea/TwitterAlcoholHadoop.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alcoholscore.py" afterPath="$PROJECT_DIR$/alcoholscore.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="TwitterAlcoholHadoop.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,9 +30,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$MrJob.coverage" NAME="MrJob Coverage Results" MODIFIED="1388166321320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1388148404849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$toMongo.coverage" NAME="toMongo Coverage Results" MODIFIED="1390175681493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$MrJob.coverage" NAME="MrJob Coverage Results" MODIFIED="1390671452985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$run.coverage" NAME="run Coverage Results" MODIFIED="1390566008598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$alcoholscore.coverage" NAME="alcoholscore Coverage Results" MODIFIED="1390571308407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$mapper.coverage" NAME="mapper Coverage Results" MODIFIED="1388091111691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1388148404849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/TwitterAlcoholHadoop$geo.coverage" NAME="geo Coverage Results" MODIFIED="1388145400163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -29,37 +50,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="run.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="799" selection-end="799" vertical-scroll-proportion="0.70197046" vertical-offset="0" max-vertical-offset="406">
+              <folding>
+                <element signature="e#29#66#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TWEETDUMPS.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testdata/TWEETDUMPS.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="30" selection-start="26" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="14669" max-vertical-offset="15075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="alcoholscore.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alcoholscore.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="18" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2010">
-              <folding />
+            <state line="15" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="615">
+              <folding>
+                <element signature="e#514#1142#0" expanded="false" />
+                <element signature="e#1160#3916#0" expanded="false" />
+                <element signature="e#3965#4073#0" expanded="false" />
+                <element signature="e#4102#4503#0" expanded="false" />
+                <element signature="e#4537#8472#0" expanded="false" />
+                <element signature="e#4686#4733#0" expanded="false" />
+                <element signature="e#4776#7331#0" expanded="false" />
+                <element signature="e#7439#8239#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Geo.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Geo.py">
+      <file leaf-file-name=".mrjob.conf" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.mrjob.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="40" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1770">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collocation.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/collocation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="49" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="315">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="english" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/files/english">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="3" selection-start="621" selection-end="621" vertical-scroll-proportion="1.3086125" vertical-offset="1343" max-vertical-offset="1980">
+            <state line="13" column="15" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
@@ -72,23 +104,33 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/classes/postcode.py" />
-        <option value="$PROJECT_DIR$/files/postcodes.csv" />
-        <option value="$PROJECT_DIR$/files/postcodetoRegion.csv" />
         <option value="$PROJECT_DIR$/files/postcodetor.csv" />
         <option value="$PROJECT_DIR$/classes/geo.py" />
         <option value="$PROJECT_DIR$/reducer.py" />
         <option value="$PROJECT_DIR$/mapper.py" />
         <option value="$PROJECT_DIR$/terms.csv" />
         <option value="$PROJECT_DIR$/english" />
-        <option value="$PROJECT_DIR$/mrjob.conf" />
-        <option value="$PROJECT_DIR$/alcoholscore.py" />
-        <option value="$PROJECT_DIR$/Geo.py" />
         <option value="$PROJECT_DIR$/collocation.py" />
         <option value="$PROJECT_DIR$/TwitterScore.py" />
+        <option value="$PROJECT_DIR$/tmpfiles/part-00000" />
+        <option value="$PROJECT_DIR$/AlcoholGraphs.py" />
+        <option value="$PROJECT_DIR$/toMongo.py" />
+        <option value="$PROJECT_DIR$/mrjob.conf" />
+        <option value="$PROJECT_DIR$/Geo.py" />
+        <option value="$PROJECT_DIR$/alcoholscore.py" />
+        <option value="$PROJECT_DIR$/.mrjob.conf" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
@@ -98,7 +140,7 @@
     <option name="width" value="1260" />
     <option name="height" value="760" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -124,7 +166,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,36 +184,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterAlcoholHadoop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterAlcoholHadoop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testdata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterAlcoholHadoop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TwitterAlcoholHadoop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -181,7 +195,7 @@
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/run.py" />
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -198,9 +212,10 @@
       <recent name="$PROJECT_DIR$/classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/tools" />
       <recent name="$PROJECT_DIR$/files" />
       <recent name="$PROJECT_DIR$/testdata" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.MrJob">
@@ -244,24 +259,42 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+    <configuration default="false" name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TwitterAlcoholHadoop" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="alcoholscore" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TwitterAlcoholHadoop" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/alcoholscore.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
@@ -326,9 +359,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -400,28 +430,54 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python" />
+      <option name="SDK_HOME" value="$USER_HOME$/MrJobVE/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TwitterAlcoholHadoop" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/alcoholscore.py" />
-      <option name="PARAMETERS" value="./testdata/TWEETDUMPS.json --file ./files/postcodeareas.csv --file ./files/postcodes.csv --file ./files/terms.csv --file ./files/english" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="toMongo" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/MrJobVE/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TwitterAlcoholHadoop" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/toMongo.py" />
+      <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Python.mapper" />
-      <item index="1" class="java.lang.String" itemvalue="Python.geo" />
-      <item index="2" class="java.lang.String" itemvalue="Python.MrJob" />
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="Python.MrJob" />
+      <item index="1" class="java.lang.String" itemvalue="Python.toMongo" />
+      <item index="2" class="java.lang.String" itemvalue="Python.mapper" />
+      <item index="3" class="java.lang.String" itemvalue="Python.geo" />
+      <item index="4" class="java.lang.String" itemvalue="Python.run" />
+      <item index="5" class="java.lang.String" itemvalue="Python.alcoholscore" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.geo" />
-        <item index="1" class="java.lang.String" itemvalue="Python.mapper" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.alcoholscore" />
+        <item index="1" class="java.lang.String" itemvalue="Python.run" />
+        <item index="2" class="java.lang.String" itemvalue="Python.geo" />
+        <item index="3" class="java.lang.String" itemvalue="Python.mapper" />
       </list>
     </recent_temporary>
   </component>
@@ -453,21 +509,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="31" width="1260" height="760" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6706767" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16666667" sideWeight="0.6721805" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32932332" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32781956" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32781956" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -485,46 +541,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/alcoholscore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="18" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2010">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Geo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="40" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1770">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/collocation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="49" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/english">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="3" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0" vertical-offset="1525" max-vertical-offset="1980">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/postcodeareas.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="0" selection-start="2204" selection-end="2204" vertical-scroll-proportion="0.0" vertical-offset="1559" max-vertical-offset="1965" />
-      </provider>
-    </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/csv.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="100" column="0" selection-start="2922" selection-end="2922" vertical-scroll-proportion="0.0" vertical-offset="1276" max-vertical-offset="6750" />
@@ -535,62 +555,101 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100170" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testdata/TWEETDUMPS.json">
+    <entry file="file://$PROJECT_DIR$/terms.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15075">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/english">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="3" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0" vertical-offset="1890" max-vertical-offset="1980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlcoholGraphs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="218" selection-end="218" vertical-scroll-proportion="-0.2088167" vertical-offset="135" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/toMongo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="317" selection-end="317" vertical-scroll-proportion="0.38283062" vertical-offset="0" max-vertical-offset="431" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/MrJobVE/lib/python2.7/site-packages/mrjob/job.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="314" column="8" selection-start="10756" selection-end="10756" vertical-scroll-proportion="0.073891625" vertical-offset="4575" max-vertical-offset="18405">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/terms.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/MrJob.pem">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mrjob.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="28" selection-start="139" selection-end="139" vertical-scroll-proportion="0.215311" vertical-offset="0" max-vertical-offset="418" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Geo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="40" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1725">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/collocation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="49" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alcoholscore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="18" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="83" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TwitterScore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="40" selection-start="195" selection-end="195" vertical-scroll-proportion="0.32296652" vertical-offset="0" max-vertical-offset="525">
+        <state line="1" column="0" selection-start="29" selection-end="85" vertical-scroll-proportion="0.035799522" vertical-offset="0" max-vertical-offset="525">
           <folding>
             <element signature="e#29#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/english">
+    <entry file="file://$PROJECT_DIR$/testdata/TWEETDUMPS.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="3" selection-start="621" selection-end="621" vertical-scroll-proportion="1.3086125" vertical-offset="1343" max-vertical-offset="1980">
+        <state line="0" column="30" selection-start="26" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="14693" max-vertical-offset="15075">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collocation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="60" selection-end="203" vertical-scroll-proportion="0.071599044" vertical-offset="0" max-vertical-offset="419">
+          <folding>
+            <element signature="e#60#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.mrjob.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="15" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alcoholscore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <folding>
+            <element signature="e#514#1142#0" expanded="false" />
+            <element signature="e#1160#3916#0" expanded="false" />
+            <element signature="e#3965#4073#0" expanded="false" />
+            <element signature="e#4102#4503#0" expanded="false" />
+            <element signature="e#4537#8472#0" expanded="false" />
+            <element signature="e#4686#4733#0" expanded="false" />
+            <element signature="e#4776#7331#0" expanded="false" />
+            <element signature="e#7439#8239#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="799" selection-end="799" vertical-scroll-proportion="0.70197046" vertical-offset="0" max-vertical-offset="406">
+          <folding>
+            <element signature="e#29#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

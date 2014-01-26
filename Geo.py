@@ -2,6 +2,7 @@ import csv
 from pprint import pprint
 import numpy
 from scipy.spatial import cKDTree
+import os
 
 class Geo:
 

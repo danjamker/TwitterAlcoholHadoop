@@ -11,13 +11,139 @@ __author__ = 'Daniel Kershaw <d.kershaw1@lancaster.ac.uk>'
 from mrjob.job import MRJob
 from mrjob.protocol import JSONValueProtocol
 from mrjob.protocol import JSONProtocol
+from nltk.collocations import BigramCollocationFinder
+from nltk.metrics import BigramAssocMeasures
 
 import datetime
-from Geo import Geo
-from pprint import pprint
-import json
-from TwitterScore import TwitterScore
-import collocation
+import csv
+import numpy
+from scipy.spatial import cKDTree
+from nltk.tokenize import wordpunct_tokenize
+
+class TwitterScore:
+
+    def __init__(self):
+        self.data = []
+
+        for row in csv.DictReader(open('terms.csv', 'rb'), ["term","weight"]):
+            self.data.append(row)
+
+    def score(self, tweet):
+        terms = [t["term"] for t in self.data]
+        score = 0
+        words = [x.lower() for x in wordpunct_tokenize(tweet)]
+        tnmc = len(set(terms) & set(words))
+        tnmu = 0
+        for w in words:
+            if w in terms:
+                tnmu = tnmu + 1
+
+        if tnmc or tnmu != 0.0:
+            try:
+                score = float(tnmc) / float(tnmu)
+            except:
+                return score
+
+        return score
+
+class Geo:
+
+    def __init__(self):
+
+        self.data = []
+        self.regions = []
+
+        for row in csv.DictReader(open('postcodes.csv', 'rb'), ["id", "postcode", "lat", "lng"]):
+            self.data.append(row)
+
+        for row in csv.DictReader(open('postcodeareas.csv', 'rU'), ["initial", "region"]):
+            self.regions.append(row)
+
+        for row in self.data:
+            row["area"] = self.postcodetoareacode(row["postcode"])
+            for r in self.regions:
+                if r["initial"] == row["area"]:
+                    row["region"] = r["region"]
+
+        self.tree = cKDTree(self.coordinates())
+
+    def postcodetoareacode(self, postcode):
+        '''Returns the post code region for a post code
+
+        This truncates the f substring of letter e.g. YO26 -> YO
+
+        '''
+        r = ""
+        t = True
+        for l in postcode:
+            if l.isdigit() == False:
+                if t == True:
+                    r += str(l)
+            else:
+                t = False
+        return r
+
+    def coordinates(self):
+        '''Returns a list of all the coordinates of all the postcodes in the list
+
+        '''
+        return [[float(record["lat"]), float(record["lng"])] for record in self.data]
+
+    def postcodes(self):
+        '''
+        Returns a list of all the post codes
+        '''
+        return list(set([record["postcode"] for record in self.data]))
+
+    def postcoderegions(self):
+        '''
+        Returnes a list of all the post code regions
+        '''
+        return list(set([record["area"] for record in self.data]))
+
+    def regions(self):
+        '''
+        Returns a list of all the regions
+        '''
+        return list(set([record["region"] for record in self.data]))
+
+    def findnearestpostcode(self, long, lat, k=2):
+        '''
+        Returns a list of k nearest nabours of points in the UK
+        '''
+        r = []
+        dists, indexes = self.tree.query(numpy.array([long, lat]), k)
+        if k > 1:
+            for dist, index in zip(dists, indexes):
+                tmp = self.data[index]
+                tmp["distance"] = dist
+                r.append(tmp)
+        else:
+            tmp = self.data[indexes]
+            tmp["distance"] = dists
+            r.append(tmp)
+
+        return r
+
+    def postcodesinarea(self, area):
+        '''
+        Returnes a list of all the postcodes in an area.
+        '''
+        tmp = []
+        for row in self.data:
+            if row["area"] == area:
+                tmp.append(row)
+        return tmp
+
+    def postcoderegonsinregon(self, region):
+        '''
+        List all the post code in a region
+        '''
+        tmp = []
+        for row in self.data:
+            if row["region"] == region:
+                tmp.append(row)
+        return tmp
 
 def yeildkey(locaiton, time, granularity):
     v1 ={}
@@ -26,17 +152,30 @@ def yeildkey(locaiton, time, granularity):
     v1["granularity"] = granularity
     return v1
 
+def collocation(text):
+    #set all words to lower case
+    words = [w.lower() for w in wordpunct_tokenize(text)]
+
+    bfc = BigramCollocationFinder.from_words(words)
+    stopset = set(line.strip() for line in open('english'))
+    filter_stops = lambda w: len(w) < 3 or w in stopset
+    bfc.apply_word_filter(filter_stops)
+    bfcScore = [p for p, s in bfc.score_ngrams(BigramAssocMeasures.likelihood_ratio)]
+    return bfcScore
+
 class AlcoholScore(MRJob):
 
     INPUT_PROTOCOL = JSONValueProtocol
     INTERNAL_PROTOCOL = JSONProtocol
     OUTPUT_PROTOCOL = JSONValueProtocol
 
+
     def mapper_init(self):
         self.g = Geo()
         self.ts = TwitterScore()
 
     def mapper(self, key, line):
+        print line
         """
         Mapper: send score from a single movie to
         other movies
@@ -47,7 +186,6 @@ class AlcoholScore(MRJob):
         postcoderegion = ""
         aresarea = []
         if tweet["geo"] != None:
-
             nearesarea = self.g.findnearestpostcode(tweet["geo"]["coordinates"][1], tweet["geo"]["coordinates"][0], 1)
             postcode = nearesarea[0]["postcode"]
             postcoderegion = nearesarea[0]["area"]
@@ -88,8 +226,8 @@ class AlcoholScore(MRJob):
         self.ts = TwitterScore()
 
     def reducer(self, key, values):
-        ts = TwitterScore()
-        scorearray = [t["score"] for t in values]
+        tmpvalues = list(values)
+        scorearray = [t["score"] for t in tmpvalues]
 
         tt = 0
         try:
@@ -97,14 +235,12 @@ class AlcoholScore(MRJob):
         except:
             tt = 0
 
-        corupus = ""
-        count = 0
-        for tweet in values:
-            corupus += tweet["text"]
-            count = count + 1
+        corupus = " ".join([tw["text"] for tw in tmpvalues])
+        count = len(tmpvalues)
+
         words = []
-        for coll in collocation.collocation(corupus):
-            if len(set(coll) & set([t["term"] for t in ts.data])) > 0:
+        for coll in collocation(corupus):
+            if len(set(coll) & set([t["term"] for t in self.ts.data])) > 0:
                 words.append(coll)
 
         returnStrcut = {}
@@ -121,8 +257,10 @@ class AlcoholScore(MRJob):
         return [
             self.mr(mapper_init=self.mapper_init,
                     mapper=self.mapper,
+                    reducer_init=self.reducer_init,
                     reducer=self.reducer)
         ]
 
 if __name__ == '__main__':
+
     AlcoholScore.run()
