@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="822bd9ef-b5b9-4b7a-ab1c-835b13954213" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run.py" afterPath="$PROJECT_DIR$/run.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TwitterAlcoholHadoop.iws" />
@@ -489,7 +488,11 @@
       <created>1390814607732</created>
       <updated>1390814607732</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Remove comment block from run">
+      <created>1390814624423</created>
+      <updated>1390814624423</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -526,7 +529,8 @@
     </option>
     <MESSAGE value="Initial Commut&#10;" />
     <MESSAGE value="Change the VirtualEnv" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change the VirtualEnv" />
+    <MESSAGE value="Remove comment block from run" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove comment block from run" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
