@@ -13,7 +13,8 @@ from mrjob.protocol import JSONValueProtocol
 from mrjob.protocol import JSONProtocol
 from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
-
+from pprint import pprint
+import time
 import datetime
 import csv
 import numpy
@@ -175,7 +176,6 @@ class AlcoholScore(MRJob):
         self.ts = TwitterScore()
 
     def mapper(self, key, line):
-        print line
         """
         Mapper: send score from a single movie to
         other movies
@@ -208,35 +208,37 @@ class AlcoholScore(MRJob):
             region = nearesarea[0]["region"]
 
         tweet["score"] = self.ts.score(tweet["text"])
-        # if tweet["score"] > 0:
-        #     print region.replace(' ', '-') + " " + datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%d")
-        #     pprint(line)
-        #     print tweet["score"]
 
-        yield(yeildkey(region, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%d"), "daily"),tweet)
-        yield(yeildkey(region, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%dT%H"), "hour"),tweet)
-        yield(yeildkey(postcode, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%d"), "daily"),tweet)
-        yield(yeildkey(postcode, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%dT%H"), "hour"),tweet)
-        yield(yeildkey(postcoderegion, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%d"), "daily"),tweet)
-        yield(yeildkey(postcoderegion, datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%dT%H"), "hour"),tweet)
-        yield(yeildkey("National-UK", datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%d"), "daily"),tweet)
-        yield(yeildkey("National-UK", datetime.datetime.strptime(str(tweet["createdAt"]), "%d-%M-%Y %H:%m:%S").strftime("%Y-%m-%dT%H"), "hour"),tweet)
+        yield(yeildkey(region, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        yield(yeildkey(region, time.strftime("%Y-%m-%dT%H",time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        yield(yeildkey(postcode, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        yield(yeildkey(postcode, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        yield(yeildkey("National-UK", time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        yield(yeildkey("National-UK", time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
 
     def reducer_init(self):
         self.ts = TwitterScore()
 
     def reducer(self, key, values):
-        tmpvalues = list(values)
-        scorearray = [t["score"] for t in tmpvalues]
+        scoresum = 0
+        count = 0
+        corupus = ""
+
+        for tweet in values:
+            scoresum = scoresum + tweet["score"]
+            count = count + 1
+            corupus += tweet["text"]
 
         tt = 0
         try:
-            tt = float(sum(scorearray)) / float(len(scorearray))
+            tt = float(scoresum) / float(count)
         except:
             tt = 0
 
-        corupus = " ".join([tw["text"] for tw in tmpvalues])
-        count = len(tmpvalues)
+
+
 
         words = []
         for coll in collocation(corupus):
