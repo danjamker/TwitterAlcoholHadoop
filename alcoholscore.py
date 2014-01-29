@@ -254,6 +254,9 @@ class AlcoholScore(MRJob):
 
         yield(None ,returnStrcut)
 
+    def combiner(self, key, values):
+
+
     def steps(self):
         return [
             self.mr(mapper_init=self.mapper_init,
