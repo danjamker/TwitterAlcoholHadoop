@@ -169,7 +169,6 @@ class AlcoholScore(MRJob):
     INTERNAL_PROTOCOL = JSONProtocol
     OUTPUT_PROTOCOL = JSONValueProtocol
 
-
     def mapper_init(self):
         self.g = Geo()
         self.ts = TwitterScore()
