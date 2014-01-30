@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bfff3085-c73e-435e-9049-c5f45b7bc230" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/TwitterAlcoholHadoop.iml" afterPath="$PROJECT_DIR$/.idea/TwitterAlcoholHadoop.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alcoholscore.py" afterPath="$PROJECT_DIR$/alcoholscore.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="bfff3085-c73e-435e-9049-c5f45b7bc230" name="Default" comment="" />
     <ignored path="TwitterAlcoholHadoop.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
