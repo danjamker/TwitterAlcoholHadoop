@@ -207,7 +207,6 @@ class AlcoholScore(MRJob):
     INTERNAL_PROTOCOL = JSONProtocol
     OUTPUT_PROTOCOL = JSONValueProtocol
 
-
     def mapper_init(self):
         self.g = Geo()
         self.ts = TwitterScore()
@@ -309,6 +308,9 @@ class AlcoholScore(MRJob):
         returnStrcut["type"] = key["granularity"]
 
         yield(None ,returnStrcut)
+
+    def combiner(self, key, values):
+
 
     def steps(self):
         return [
