@@ -41,7 +41,7 @@ class TwitterScore:
 
         if tnmc or tnmu != 0.0:
             try:
-                score = float(tnmc) / float(tnmu)
+                score = float(tnmc) / len(words)
             except:
                 return score
 
@@ -164,6 +164,43 @@ def collocation(text):
     bfcScore = [p for p, s in bfc.score_ngrams(BigramAssocMeasures.likelihood_ratio)]
     return bfcScore
 
+def empytDoct(terms):
+    t = {}
+    for w in terms:
+        t[w['term']] = 0
+    return t
+
+def probabilityDistribution(terms, count):
+    for key in terms:
+        prob = 0
+        try:
+            prob = float(terms[key])/float(count)
+        except:
+            prob = 0
+        terms[key] = float(prob)
+    return terms
+
+def addDicts(master, addition):
+    for key in master:
+        master[key] = master[key] + addition[key]
+
+    return master
+
+def termFrequancy(termsDic ,text):
+    count = 0
+    terms = {}
+    for w in termsDic:
+        terms[w['term']] = 0
+
+    words = [x.lower() for x in wordpunct_tokenize(text)]
+
+    for w in words:
+        count = count + 1
+        if w in terms:
+            terms[w] = terms[w] + 1
+
+    return count, terms
+
 class AlcoholScore(MRJob):
 
     INPUT_PROTOCOL = JSONValueProtocol
@@ -186,13 +223,12 @@ class AlcoholScore(MRJob):
         postcoderegion = ""
         aresarea = []
         if tweet["geo"] != None:
-            nearesarea = self.g.findnearestpostcode(tweet["geo"]["coordinates"][1], tweet["geo"]["coordinates"][0], 1)
+            nearesarea = self.g.findnearestpostcode(tweet["geo"]["coordinates"][0], tweet["geo"]["coordinates"][1], 1)
             postcode = nearesarea[0]["postcode"]
             postcoderegion = nearesarea[0]["area"]
             region = nearesarea[0]["region"]
         else:
-            tweet["place"]
-            tweet["place"]["bounding_box"]["coordinates"][0]
+
             lot = 0
             lit = 0
             count = 0
@@ -201,8 +237,7 @@ class AlcoholScore(MRJob):
                 lot = lot + lo
                 count = count + 1
 
-            nearesarea = self.g.findnearestpostcode(lot / count, lit / count, 1)
-
+            nearesarea = self.g.findnearestpostcode(lit / count, lot / count, 1)
             postcode = nearesarea[0]["postcode"]
             postcoderegion = nearesarea[0]["area"]
             region = nearesarea[0]["region"]
@@ -211,25 +246,42 @@ class AlcoholScore(MRJob):
 
         yield(yeildkey(region, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
         yield(yeildkey(region, time.strftime("%Y-%m-%dT%H",time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        yield(yeildkey(postcode, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        yield(yeildkey(postcode, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        yield(yeildkey("National-UK", time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        yield(yeildkey("National-UK", time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        # yield(yeildkey(postcode, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        # yield(yeildkey(postcode, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        # yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        # yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+        # yield(yeildkey("National-UK", time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
+        # yield(yeildkey("National-UK", time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
 
     def reducer_init(self):
+        self.terms = [{'term':"drunk",'weight':1},
+        {'term':"wine",'weight':1},
+        {'term':"wasted",'weight':1},
+        {'term':"pissed",'weight':1},
+        {'term':"hungover",'weight':1},
+        {'term':"hangover",'weight':1},
+        {'term':"vodka",'weight':1}
+        ]
+
+
         self.ts = TwitterScore()
 
     def reducer(self, key, values):
         scoresum = 0
         count = 0
-        corupus = ""
+        # corupus = ""
+
+        et = empytDoct(self.terms)
+        wordcount = 0
+        total = 0
 
         for tweet in values:
             scoresum = scoresum + tweet["score"]
             count = count + 1
-            corupus += tweet["text"]
+            # corupus += tweet["text"]
+            c, dc = termFrequancy(self.terms, tweet["text"])
+            et = addDicts(et , dc)
+            wordcount = wordcount + c
 
         tt = 0
         try:
@@ -240,17 +292,20 @@ class AlcoholScore(MRJob):
 
 
 
-        words = []
-        for coll in collocation(corupus):
-            if len(set(coll) & set([t["term"] for t in self.ts.data])) > 0:
-                words.append(coll)
+        # words = []
+        # for coll in collocation(corupus):
+        #     if len(set(coll) & set([t["term"] for t in self.ts.data])) > 0:
+        #         words.append(coll)
 
         returnStrcut = {}
         returnStrcut["time"] = key["time"]
         returnStrcut["location"] = key["location"]
         returnStrcut["score"] = tt
         returnStrcut["tweetCount"] = count
-        returnStrcut["collocation"] = words
+        returnStrcut["termfreq"] = dict(et)
+        returnStrcut["termprob"] = probabilityDistribution(et , wordcount)
+        returnStrcut["wordCount"] = wordcount
+        # returnStrcut["collocation"] = words
         returnStrcut["type"] = key["granularity"]
 
         yield(None ,returnStrcut)
