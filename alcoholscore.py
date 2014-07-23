@@ -216,41 +216,42 @@ class AlcoholScore(MRJob):
         Mapper: send score from a single movie to
         other movies
         """
-        tweet = line
-        postcode = ""
-        region = ""
-        postcoderegion = ""
-        aresarea = []
-        if tweet["geo"] != None:
-            nearesarea = self.g.findnearestpostcode(tweet["geo"]["coordinates"][0], tweet["geo"]["coordinates"][1], 1)
-            postcode = nearesarea[0]["postcode"]
-            postcoderegion = nearesarea[0]["area"]
-            region = nearesarea[0]["region"]
-        else:
+        if "geo" in line:
+	    tweet = line
+            postcode = ""
+            region = ""
+            postcoderegion = ""
+            aresarea = []
+            if tweet["geo"] != None:
+                nearesarea = self.g.findnearestpostcode(tweet["geo"]["coordinates"][0], tweet["geo"]["coordinates"][1], 1)
+                postcode = nearesarea[0]["postcode"]
+                postcoderegion = nearesarea[0]["area"]
+                region = nearesarea[0]["region"]
+            else:
 
-            lot = 0
-            lit = 0
-            count = 0
-            for lo, li in tweet["place"]["bounding_box"]["coordinates"][0]:
-                lit = lit + li
-                lot = lot + lo
-                count = count + 1
+                lot = 0
+                lit = 0
+                count = 0
+                for lo, li in tweet["place"]["bounding_box"]["coordinates"][0]:
+                    lit = lit + li
+                    lot = lot + lo
+                    count = count + 1
 
-            nearesarea = self.g.findnearestpostcode(lit / count, lot / count, 1)
-            postcode = nearesarea[0]["postcode"]
-            postcoderegion = nearesarea[0]["area"]
-            region = nearesarea[0]["region"]
+                nearesarea = self.g.findnearestpostcode(lit / count, lot / count, 1)
+                postcode = nearesarea[0]["postcode"]
+                postcoderegion = nearesarea[0]["area"]
+                region = nearesarea[0]["region"]
 
-        tweet["score"] = self.ts.score(tweet["text"])
+            tweet["score"] = self.ts.score(tweet["text"])
 
-        yield(yeildkey(region, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        yield(yeildkey(region, time.strftime("%Y-%m-%dT%H",time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        # yield(yeildkey(postcode, time.strftime("%Y-%m-%d",time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        # yield(yeildkey(postcode, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        # yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        # yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
-        # yield(yeildkey("National-UK", time.strftime("%Y-%m-%d", time.gmtime(tweet["createdAt"]["$date"]/1000)), "daily"),tweet)
-        # yield(yeildkey("National-UK", time.strftime("%Y-%m-%dT%H", time.gmtime(tweet["createdAt"]["$date"]/1000)), "hour"),tweet)
+            yield(yeildkey(region, time.strftime("%Y-%m-%d",time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "daily"),tweet)
+            yield(yeildkey(region, time.strftime("%Y-%m-%dT%H",time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "hour"),tweet)
+            yield(yeildkey(postcode, time.strftime("%Y-%m-%d",time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "daily"),tweet)
+            yield(yeildkey(postcode, time.strftime("%Y-%m-%dT%H", time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "hour"),tweet)
+            yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%d", time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "daily"),tweet)
+            yield(yeildkey(postcoderegion, time.strftime("%Y-%m-%dT%H", time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "hour"),tweet)
+            yield(yeildkey("National-UK", time.strftime("%Y-%m-%d", time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "daily"),tweet)
+            yield(yeildkey("National-UK", time.strftime("%Y-%m-%dT%H", time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')), "hour"),tweet)
 
     def reducer_init(self):
         self.terms = [{'term':"drunk",'weight':1},
@@ -308,9 +309,6 @@ class AlcoholScore(MRJob):
         returnStrcut["type"] = key["granularity"]
 
         yield(None ,returnStrcut)
-
-    def combiner(self, key, values):
-
 
     def steps(self):
         return [
