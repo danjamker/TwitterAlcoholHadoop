@@ -301,7 +301,7 @@ class AlcoholScore(MRJob):
         # returnStrcut["collocation"] = words
         returnStrcut["type"] = key["granularity"]
 
-        yield(None ,returnStrcut)
+        yield(key ,returnStrcut)
 
     def reducer(self, key, values):
         scoresum = 0
