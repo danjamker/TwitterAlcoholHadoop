@@ -290,13 +290,6 @@ class AlcoholScore(MRJob):
             tt = 0
 
 
-
-
-        # words = []
-        # for coll in collocation(corupus):
-        #     if len(set(coll) & set([t["term"] for t in self.ts.data])) > 0:
-        #         words.append(coll)
-
         returnStrcut = {}
         returnStrcut["time"] = key["time"]
         returnStrcut["location"] = key["location"]
