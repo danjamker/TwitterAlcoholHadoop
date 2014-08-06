@@ -351,6 +351,8 @@ class AlcoholScore(MRJob):
         return [
             self.mr(mapper_init=self.mapper_init,
                     mapper=self.mapper,
+                    combiner_init=self.reducer_init,
+                    combiner = self.combiner,
                     reducer_init=self.reducer_init,
                     reducer=self.reducer)
         ]

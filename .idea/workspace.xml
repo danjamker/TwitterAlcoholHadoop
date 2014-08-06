@@ -28,8 +28,8 @@
       <file leaf-file-name="alcoholscore.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/alcoholscore.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51171875" vertical-offset="3972" max-vertical-offset="5490">
-              <caret line="291" column="0" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.765625" vertical-offset="4707" max-vertical-offset="5520">
+              <caret line="353" column="33" selection-start-line="353" selection-start-column="20" selection-end-line="353" selection-end-column="33" />
               <folding>
                 <element signature="e#156#183#0" expanded="true" />
               </folding>
@@ -199,8 +199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alcoholscore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51171875" vertical-offset="3972" max-vertical-offset="5490">
-          <caret line="291" column="0" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.765625" vertical-offset="4707" max-vertical-offset="5520">
+          <caret line="353" column="33" selection-start-line="353" selection-start-column="20" selection-end-line="353" selection-end-column="33" />
           <folding>
             <element signature="e#156#183#0" expanded="true" />
           </folding>
