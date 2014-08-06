@@ -279,9 +279,9 @@ class AlcoholScore(MRJob):
             scoresum = scoresum + tweet["score"]
             count = count + 1
             # corupus += tweet["text"]
-            c, dc = termFrequancy(self.terms, tweet["text"])
-            et = addDicts(et , dc)
-            wordcount = wordcount + c
+            #c, dc = termFrequancy(self.terms, tweet["text"])
+            #et = addDicts(et , dc)
+            #wordcount = wordcount + c
 
         tt = 0
         try:
@@ -294,9 +294,9 @@ class AlcoholScore(MRJob):
         returnStrcut["time"] = key["time"]
         returnStrcut["location"] = key["location"]
         returnStrcut["score"] = tt
-        returnStrcut["tweetCount"] = count
-        returnStrcut["termfreq"] = dict(et)
-        returnStrcut["termprob"] = probabilityDistribution(et , wordcount)
+        #returnStrcut["tweetCount"] = count
+        #returnStrcut["termfreq"] = dict(et)
+        #returnStrcut["termprob"] = probabilityDistribution(et , wordcount)
         returnStrcut["wordCount"] = wordcount
         # returnStrcut["collocation"] = words
         returnStrcut["type"] = key["granularity"]
