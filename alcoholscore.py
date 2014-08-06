@@ -266,7 +266,7 @@ class AlcoholScore(MRJob):
 
         self.ts = TwitterScore()
 
-    def reducer(self, key, values):
+    def combiner(self, key, values):
         scoresum = 0
         count = 0
         # corupus = ""
@@ -305,6 +305,50 @@ class AlcoholScore(MRJob):
         returnStrcut["termfreq"] = dict(et)
         returnStrcut["termprob"] = probabilityDistribution(et , wordcount)
         returnStrcut["wordCount"] = wordcount
+        # returnStrcut["collocation"] = words
+        returnStrcut["type"] = key["granularity"]
+
+        yield(None ,returnStrcut)
+
+    def reducer(self, key, values):
+        scoresum = 0
+        count = 0
+        # corupus = ""
+
+        et = empytDoct(self.terms)
+        wordcount = 0
+        total = 0
+
+        for tweet in values:
+            scoresum = scoresum + tweet["score"]
+            count = count + 1
+            # corupus += tweet["text"]
+            #c, dc = termFrequancy(self.terms, tweet["text"])
+            #et = addDicts(et , dc)
+            #wordcount = wordcount + c
+
+        tt = 0
+        try:
+            tt = float(scoresum) / float(count)
+        except:
+            tt = 0
+
+
+
+
+        # words = []
+        # for coll in collocation(corupus):
+        #     if len(set(coll) & set([t["term"] for t in self.ts.data])) > 0:
+        #         words.append(coll)
+
+        returnStrcut = {}
+        returnStrcut["time"] = key["time"]
+        returnStrcut["location"] = key["location"]
+        returnStrcut["score"] = tt
+        #returnStrcut["tweetCount"] = count
+        #returnStrcut["termfreq"] = dict(et)
+        #returnStrcut["termprob"] = probabilityDistribution(et , wordcount)
+        #returnStrcut["wordCount"] = wordcount
         # returnStrcut["collocation"] = words
         returnStrcut["type"] = key["granularity"]
 
