@@ -10,9 +10,9 @@ if __name__ == "__main__":
     #
     # print files
 
-    #client = MongoClient('mongodb://scc-kershaw.lancs.ac.uk:27017/')
-    #db = client['AlcoholTweetsResults']
-    #results = db['WordCardonality']
+    client = MongoClient('mongodb://scc-kershaw.lancs.ac.uk:27017/')
+    db = client['AlcoholTweetsResults']
+    results = db['Results']
 
     tmp1 = ['splitoutput-46.json','--conf-path', '.mrjob.conf', '--file', 'postcodes.csv', '--file', 'english', '--file', 'postcodeareas.csv', '--file', 'terms.csv']
     #files = ["splitoutput-2014-01-01.json"]
@@ -26,5 +26,5 @@ if __name__ == "__main__":
 
             for line in runner.stream_output():
                 key, value = mr_job.parse_output_line(line)
-                #value_id = results.insert(value)
-                print value
+                value_id = results.insert(value)
+                #print value
